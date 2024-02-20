@@ -1,6 +1,7 @@
 import { API_URL } from "../app/(home)/page"
 async function getMovie(id: string) {
     console.log(`Fetching Movie :  ${Date.now()}`) // 영화 패치 시간
+    // throw new Error("somethin wrong");
     await new Promise((res) => setTimeout(res, 2000))
     const res = await fetch(`${API_URL}/${id}`);
     return res.json();
