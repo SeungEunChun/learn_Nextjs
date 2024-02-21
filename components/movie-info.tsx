@@ -32,7 +32,7 @@ export default async function Movieinfo({ id }: { id: string }) {
 
         </div>
 
-        <ul style={{ width: "300px" }}>Credits "actor" | "character"
+        <ul style={{ width: "300px" }}>Credits actor | character
             <hr />
             {
 
