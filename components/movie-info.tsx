@@ -1,7 +1,10 @@
+
 import { API_URL } from "../app/(home)/page"
 import styles from '../styles/movie-info.module.css'
 import Link from "next/link"
-async function getMovie(id: string) {
+import { Suspense } from "react"
+import MovieVideos from '../components/movie-videos'
+export async function getMovie(id: string) {
     console.log(`Fetching Movie :  ${Date.now()}`) // 영화 패치 시간
     // throw new Error("somethin wrong");
     await new Promise((res) => setTimeout(res, 1000))
@@ -10,7 +13,7 @@ async function getMovie(id: string) {
 }
 
 async function getCredits(id: string) {
-    await new Promise((res) => setTimeout(res, 1500))
+    await new Promise((res) => setTimeout(res, 1000))
     const res = await fetch(`${API_URL}/${id}/credits`)
     return res.json();
 }
@@ -28,6 +31,7 @@ export default async function Movieinfo({ id }: { id: string }) {
             <Link href={infos.homepage} target={"_blank"}>Homepage &rarr;</Link>
 
         </div>
+
         <ul style={{ width: "300px" }}>Credits "actor" | "character"
             <hr />
             {
@@ -42,6 +46,8 @@ export default async function Movieinfo({ id }: { id: string }) {
             }
         </ul>
 
-
+        <Suspense fallback={<h1 style={{ marginTop: "30px" }}>Loading Movievideo..</h1>}>
+            <MovieVideos id={id} />
+        </Suspense>
     </div>
 }
