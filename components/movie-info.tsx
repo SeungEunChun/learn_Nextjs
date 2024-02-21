@@ -4,7 +4,7 @@ import styles from '../styles/movie-info.module.css'
 import Link from "next/link"
 import { Suspense } from "react"
 import MovieVideos from '../components/movie-videos'
-export async function getMovie(id: number) {
+export async function getMovie(id: string) {
     console.log(`Fetching Movie :  ${Date.now()}`) // 영화 패치 시간
     // throw new Error("somethin wrong");
     await new Promise((res) => setTimeout(res, 1000))
@@ -12,14 +12,14 @@ export async function getMovie(id: number) {
     return res.json();
 }
 
-async function getCredits(id: number) {
+async function getCredits(id: string) {
     await new Promise((res) => setTimeout(res, 1000))
     const res = await fetch(`${API_URL}/${id}/credits`)
     return res.json();
 }
 
 
-export default async function Movieinfo({ id }: { id: number }) {
+export default async function Movieinfo({ id }: { id: string }) {
     const infos = await getMovie(id);
     const credits = await getCredits(id);
     return <div className={styles.container}>

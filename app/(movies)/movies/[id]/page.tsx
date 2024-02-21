@@ -4,7 +4,7 @@ import { Suspense } from "react"
 import { getMovie } from "../../../../components/movie-info"
 
 interface IParams {
-    params: { id: number };
+    params: { id: string };
 }
 
 
