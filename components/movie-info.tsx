@@ -1,10 +1,10 @@
 
-import { API_URL } from "../app/(home)/page"
+import { API_URL } from "../app/constants"
 import styles from '../styles/movie-info.module.css'
 import Link from "next/link"
 import { Suspense } from "react"
 import MovieVideos from '../components/movie-videos'
-export async function getMovie(id: string) {
+export async function getMovie(id: number) {
     console.log(`Fetching Movie :  ${Date.now()}`) // 영화 패치 시간
     // throw new Error("somethin wrong");
     await new Promise((res) => setTimeout(res, 1000))
@@ -12,14 +12,14 @@ export async function getMovie(id: string) {
     return res.json();
 }
 
-async function getCredits(id: string) {
+async function getCredits(id: number) {
     await new Promise((res) => setTimeout(res, 1000))
     const res = await fetch(`${API_URL}/${id}/credits`)
     return res.json();
 }
 
 
-export default async function Movieinfo({ id }: { id: string }) {
+export default async function Movieinfo({ id }: { id: number }) {
     const infos = await getMovie(id);
     const credits = await getCredits(id);
     return <div className={styles.container}>

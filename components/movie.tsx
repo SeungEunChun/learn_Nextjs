@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 interface Movieprops {
     title: string;
-    id: string;
+    id: number;
     poster_path: string;
 }
 
