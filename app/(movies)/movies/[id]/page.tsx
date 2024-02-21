@@ -11,7 +11,7 @@ export default async function MovieDetail({ params: { id } }: { params: { id: st
 
 
     return <div>
-        <h3>Movie Detail</h3>
+
         <Suspense fallback={<h1>Loading Movieinfo..</h1>}>
             <Movieinfo id={id} />
         </Suspense>
